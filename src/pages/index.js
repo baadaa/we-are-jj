@@ -1,5 +1,11 @@
-import React from "react"
+import React from 'react';
+import Layout from '../components/Layout';
+import Clock from '../components/Clocks';
 
-export default function Home() {
-  return <div>Hello world!</div>
-}
+const IndexPage = () => (
+  <Layout>
+    <h1>Clocks</h1>
+    <Clock />
+  </Layout>
+);
+export default IndexPage;
