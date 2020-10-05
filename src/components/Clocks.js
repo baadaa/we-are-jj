@@ -8,13 +8,23 @@ const peopleByZone = {
   C: [],
   E: [],
 };
+teamList.people.forEach(person => {
+  const zone = format(new Date(), 'zzz', { timeZone: person.timezone });
+  peopleByZone[zone[0]].push(person);
+});
 const Clock = () => {
-  teamList.people.forEach(person => {
-    const zone = format(new Date(), 'zzz', { timeZone: person.timezone });
-    peopleByZone[zone[0]].push(person);
+  // console.log(peopleByZone);
+  const [now, setNow] = useState(new Date());
+  useEffect(() => {
+    const timerID = setInterval(() => tick(), 1000);
+    return function cleanUp() {
+      clearInterval(timerID);
+    };
   });
-  console.log(peopleByZone);
-  const now = new Date();
+  const tick = () => {
+    setNow(new Date());
+  };
+  // const now = new Date();
   const timezones = [
     'America/Los_Angeles',
     'America/Denver',
@@ -50,7 +60,9 @@ const Clock = () => {
         <br />
         <ul>
           {peopleByZone[zoneIndex[i]].map(person => (
-            <li key={person.id}>{person.name}</li>
+            <li key={person.id}>
+              {person.name} ({person.location})
+            </li>
           ))}
         </ul>
         <br />
