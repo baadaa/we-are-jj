@@ -5,11 +5,10 @@ import teamList from '../data/team.json';
 
 const MemberStyle = styled.div`
   border-radius: 1rem;
-  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--base-shadow);
   /* width: 30rem; */
   flex-basis: 32%;
   margin-bottom: 2%;
-  box-sizing: border-box;
   padding: 2rem;
   font-size: 1.5rem;
   line-height: 1;
@@ -19,6 +18,12 @@ const MemberStyle = styled.div`
   p {
     margin: 0;
     text-align: center;
+    &.name {
+      margin-bottom: 0.5rem;
+    }
+    &.detail {
+      font-size: 1.2rem;
+    }
   }
   p + p {
     margin-top: 0.5rem;
@@ -28,6 +33,13 @@ const MemberStyle = styled.div`
     height: 10rem;
     object-fit: cover;
     border-radius: 10rem;
+    margin-bottom: 1.5rem;
+  }
+  @media screen and (max-width: 768px) {
+    flex-basis: 49%;
+  }
+  @media screen and (max-width: 400px) {
+    flex-basis: 100%;
     margin-bottom: 1rem;
   }
 `;
@@ -53,9 +65,10 @@ const Member = ({ person }) => {
   return (
     <MemberStyle>
       <img src={photo} alt={name} />
-      <p>{name}</p>
-      <p>{title}</p>
-      <p>{location}</p>
+      <p className="name">{name}</p>
+      <p className="detail">{email}</p>
+      <p className="detail">{title}</p>
+      <p className="detail">{location}</p>
     </MemberStyle>
   );
 };

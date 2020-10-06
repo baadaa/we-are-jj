@@ -1,0 +1,15 @@
+{
+  "letter": "l",
+  "terms": [
+    {
+      "term": "LO — Loan Officer",
+      "meaning": "Employees of lenders or brokers who find borrowers, take applications, sell, and advise them. They must pass a license test in each state they intent to conduct business in.",
+      "category": "industry"
+    },
+    {
+      "term": "LTV — Loan To Value",
+      "meaning": "The percentage of the mortgage to the purchase price or the appraised value. This is figured by dividing the amount of the mortgage by the value of the home. This is used to establish the risk of the borrower defaulting on the loan.",
+      "category": "industry"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "letter": "a",
+  "terms": [
+    {
+      "term": "AE — Account Executives",
+      "meaning": "This is the person that is responsible for the relationship between two organizations, generally a lender and broker. He/she works as a liaison to ensure the relationship grows and flourishes. This person is the first point of contact for issues and concerns as the account executive knows the hierarchy of his/her organization and can escalate issues/concerns appropriately.",
+      "category": "industry"
+    },
+    {
+      "term": "A2",
+      "meaning": "Ann Arbor",
+      "category": "internal"
+    },
+    {
+      "term": "All-hands meeting",
+      "meaning": "The weekly meeting put on by the exec team",
+      "category": "internal"
+    },
+    {
+      "term": "APR — Annual Percentage Rate ",
+      "meaning": "The amount a loan will cost the borrower over one year expressed in a percentage. The APR takes into account not only the interest rate but points, and flat dollar charges by the lender as well. This does not include payments to third parties. APR's can vary dependent on current interest rates, the borrowers credit history, and the length of the term. It is important to understand that the APR is not the note rate.",
+      "category": "industry"
+    },
+    {
+      "term": "ARM — Adjustable Rate Mortgage ",
+      "meaning": "A type of mortgage that starts with a fixed interest rate but after a designated amount of time, which can range from 1 month to more than 5 years, the interest rate is adjusted. Most ARMs are adjusted every 6 months to 1 year. The time frame between rate changes is call the adjustment period. Such mortgages often start out with lower interest rates than traditional, fixed rate, loans. Whether or not the rate changes and by how much is dependent on the index an the margin. The index is how much interest is being paid on the loan. If interest rates go up your rates will also go up. on the contrary, if interest rates go down it is possible that your rates could go down. However, not all ARMs adjust downward. Lenders most commonly base their rates on 1-year constant-maturity Treasury securities (CMT), Cost of Funds Index (COFI), or London Interbank offered Rate (LIBOR). The margin is the amount that the lender adds. Some lenders will use your credit report as a measure to influence the Margin percentage. The better your credit the less margin the lender tact's on.<br /><br />There are typically interest rate caps put in place to prevent rates from getting too high. There are two types of interest rate caps, a periodic adjustment cap and a lifetime cap. The periodic adjustment cap limits the percentage that your rate can change per adjustment period. Most often this is a cap of 1-2%. The lifetime cap limits the amount that your interest rate changes over the length of the loan.<br /><br />Like many things in life, not all ARMs are created equal. There are several types of ARM's. There are traditional ARMs that has a short fixed period before the first adjustment period. There are also hybrid arms that have a longer fixed period. most commonly you will see 3/1 or 5/1 ARMs. This means that the fixed period is 3 or 5 years. The 1 signifies that the rate may be adjusted only once every year. There is also an interest-only ARM. This allows you to pay only the interest for a specified number of year. After which time payments will increase regardless of interest rates. A payment-option ARM allows you to chose one of several payment options. These options include; traditional principle and interest payments, interest only payments, and minimum payments.",
+      "category": "industry"
+    },
+    {
+      "term": "associates",
+      "meaning": "How we refer to all employees at Homepoint",
+      "category": "internal"
+    },
+    {
+      "term": "ATR — Ability To Repay",
+      "meaning": "Ability to Repay is a standard implemented in 2010 by the Consumer financial Protection Bureau as part of the Dodd-Frank Act. Before extending a loan, lenders must make a reasonable determination as to whether the borrower will have a reasonable ability to repay the debt within the terms of the loan. This determination is based off of eight factors; the borrowers current income and assets, employment status, Monthly payment of mortgage obligations, monthly payment on subsequent loans, current debt obligations, Debt-to-income ratio, and the expected payment of the covered transaction. This standard was put into place to help minimize the number of foreclosures. Lenders cannot loan to borrowers that do not have the financial capacity to repay. If a loan meets the afore mentioned standards it is considered a qualified mortgage.",
+      "category": "industry"
+    },
+    {
+      "term": "AVM — Automated Valuation Model",
+      "meaning": "The use of mathematical modeling to value properties by comparing the values of similar properties in the same area at the same point in time. The AVM can be faulty in that it doesn't take into account the condition of the property and assumes it is comparable to others in the area. This can magnify the value of a sub-par property or undervalue a superior property. AVMs are sometimes used by lenders instead of traditional appraisals. AVMs can also be useful to consumers as it can give a rough estimate to what your home is worth when looking at purchasing a new property.",
+      "category": "industry"
+    }
+  ]
+}

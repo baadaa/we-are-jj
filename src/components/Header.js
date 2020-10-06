@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import Logo from '../assets/hp-logo-rgb-full-color.svg';
+import NavItems from './navList.json';
 import '../styles/hamburgers.css';
 
 const HeaderStyle = styled.div`
@@ -14,7 +15,6 @@ const HeaderStyle = styled.div`
   box-shadow: 0 1px 1rem rgba(0, 0, 0, 0.15);
   header {
     max-width: 90rem;
-    box-sizing: border-box;
     position: relative;
     margin: 0 auto;
     height: 6rem;
@@ -23,6 +23,7 @@ const HeaderStyle = styled.div`
     align-items: center;
     padding: 0.5rem 1.5rem;
     padding-right: 0;
+    z-index: 9;
   }
   h2 {
     font-size: 2.3rem;
@@ -64,10 +65,10 @@ const HeaderStyle = styled.div`
   }
   a {
     text-decoration: none;
+  }
+  ul.nav a {
     padding: 0 3rem 0 2rem;
     color: inherit;
-    box-sizing: border-box;
-    /* position: relative; */
     display: block;
     transition: color 0.2s;
     border-left: transparent 5px solid;
@@ -86,12 +87,31 @@ const HeaderStyle = styled.div`
       color: var(--hp-navy);
     }
   }
+  .subNav {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    bottom: 0;
+    background: var(--hp-coolgray);
+    mix-blend-mode: multiply;
+    height: ${props => props.subNavHeight};
+    left: 0;
+    right: 0;
+    z-index: 0;
+    transform: ${props =>
+      props.subNavHeight ? `translateY(${props.subNavHeight})` : 'none'};
+    .inner {
+      width: 100%;
+      max-width: 90rem;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+  }
 `;
 
 const ToggleBtn = styled.div`
-  /* position: absolute; */
   z-index: 100;
-  box-sizing: border-box;
   button {
     transform: scale(0.8);
     transition: all 0.2s;
@@ -106,17 +126,19 @@ const ToggleBtn = styled.div`
   }
 `;
 
-const Header = () => {
+const Header = ({ hasSubnav, subNavHeight, subNav }) => {
   const [isCollapsed, setIsCollapsed] = useState(true);
   return (
-    <HeaderStyle>
+    <HeaderStyle subNavHeight={subNavHeight}>
       <header>
-        <h2>
-          <svg preserveAspectRatio="xMidYMid meet" className="logo">
-            <use xlinkHref={`#${Logo.id}`} />
-          </svg>
-          CXM
-        </h2>
+        <Link to="/">
+          <h2>
+            <svg preserveAspectRatio="xMidYMid meet" className="logo">
+              <use xlinkHref={`#${Logo.id}`} />
+            </svg>
+            CXM
+          </h2>
+        </Link>
         <ToggleBtn>
           <button
             className={
@@ -132,24 +154,21 @@ const Header = () => {
             </span>
           </button>
         </ToggleBtn>
-        <ul data-active={!isCollapsed}>
-          <li>
-            <Link activeClassName="current" to="/">
-              <span>Clocks</span>
-            </Link>
-          </li>
-          <li>
-            <Link activeClassName="current" to="/team">
-              <span>Team</span>
-            </Link>
-          </li>
-          {/* <li>
-            <Link activeClassName="current" to="/team">
-              <span>Coffee</span>
-            </Link>
-          </li> */}
+        <ul data-active={!isCollapsed} className="nav">
+          {NavItems.navs.map((item, i) => (
+            <li key={i}>
+              <Link activeClassName="current" to={item.link}>
+                <span>{item.title}</span>
+              </Link>
+            </li>
+          ))}
         </ul>
       </header>
+      {hasSubnav ? (
+        <div className="subNav">
+          <div className="inner">{subNav}</div>
+        </div>
+      ) : null}
     </HeaderStyle>
   );
 };

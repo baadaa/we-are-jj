@@ -10,11 +10,13 @@ import Header from './Header';
 const WrapperStyle = styled.div`
   max-width: 90rem;
   margin: 0 auto;
-  padding: 8rem 1.5rem 0;
+  padding: 9rem 1.5rem 0;
+  padding-top: ${props =>
+    props.hasSubnav ? `calc(${props.subNavHeight} + 6rem)` : '7rem'};
 `;
 
-const Layout = ({ children }) => (
-  <WrapperStyle>
+const Layout = ({ children, hasSubnav, subNavHeight, subNav }) => (
+  <WrapperStyle hasSubnav={hasSubnav} subNavHeight={subNavHeight}>
     <Helmet>
       <link
         rel="stylesheet"
@@ -22,9 +24,8 @@ const Layout = ({ children }) => (
       />
     </Helmet>
     <GlobalStyles />
-    <Header />
-
-    {children}
+    <Header hasSubnav={hasSubnav} subNavHeight={subNavHeight} subNav={subNav} />
+    <main>{children}</main>
   </WrapperStyle>
 );
 

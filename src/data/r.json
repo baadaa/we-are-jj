@@ -1,0 +1,30 @@
+{
+  "letter": "r",
+  "terms": [
+    {
+      "term": "REC — Real Estate Commission",
+      "meaning": "A department or agency that oversees real estate license of real estate agents an brokers. Each state has it's own commission. License qualifications and requirements vary from state to state.",
+      "category": "industry"
+    },
+    {
+      "term": "REO — Real Estate Owned",
+      "meaning": "Property that is owned by a bank or financial institution. Result of defaulted loans leading to foreclosure.",
+      "category": "industry"
+    },
+    {
+      "term": "REPC — Real Estate Purchase Contract",
+      "meaning": "A REPC (pronounced REP C) is the Real Estate Purchase Contract. This document outlines the terms and conditions of a purchase of real estate. It lists the buyer(s) and seller(s), agent(s), purchase price, concessions, what comes with the home, deadlines, contingencies and other legal contractual goodies. Some states have adopted template form for a REPC so that buyers, sellers and agents on both sides have an easier time going throughout the transaction without getting lawyers invovled.",
+      "category": "industry"
+    },
+    {
+      "term": "RESPA — Real Estate Settlement Practices Act",
+      "meaning": "A federal law passed in 1974 to protect the borrower and seller by requiring full disclosure of the terms of the transaction at closing. This law was passed because several lenders, title insurance companies, and real estate agents were providing 'kickbacks' to each-other with out disclosing them to borrowers. and example of a kick back is a lender advertising a very low interest rate but requiring borrowers to get title insurance from a specific company with an inflated cost. The title insurance company would the 'kickback' a portion of the fee to the lender.The RESPA prohibits kickbacks and now requires lenders to provide a Good Faith Estimate early on in the application process, with all approximate cost of the loan, and a HUD-1 at closing, disclosing the specifics of the loan and to whom all fees will be paid. RESPA restricted the amount the fees can increase to 10% between the GFE and the HUD-1. RESPA also prohibits any increase in the origination fees.",
+      "category": "industry"
+    },
+    {
+      "term": "RM — Relationship Manager",
+      "meaning": "A Relationship Manager is responsible for ensuring positive and professional communication between a company and its clients, as well as, a company and businesses that they cooperate with.",
+      "category": "industry"
+    }
+  ]
+}

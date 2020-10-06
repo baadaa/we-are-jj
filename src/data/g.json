@@ -1,0 +1,15 @@
+{
+  "letter": "g",
+  "terms": [
+    {
+      "term": "GFE — Good Faith Estimate",
+      "meaning": "A document, that should be provided to a borrower within 3 business days of application, that details the estimated closing costs and terms of the mortgage. Once signed there are some fees that can still be changed up until the time of closing an others that cannot. Those fees that cannot be changed are origination fees, transfer taxes, and, after you lock in your interest rate, your credit or charge and adjusted origination fees.",
+      "category": "industry"
+    },
+    {
+      "term": "GRM — Gross Rent Multiplier",
+      "meaning": "A way to quickly compare the value of income producing properties, investment properties, in a similar location. The GRM is calculated by dividing the sales price by the gross monthly rent.",
+      "category": "industry"
+    }
+  ]
+}

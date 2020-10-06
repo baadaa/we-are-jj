@@ -1,0 +1,25 @@
+{
+  "letter": "i",
+  "terms": [
+    {
+      "term": "IDTBS - Initial Disclosures To Be Signed",
+      "meaning": "IDTBS stands for Initial Disclosures To Be Signed. The Initial Disclosures reflecting the loan application, GFE, TIL, federal and state disclosures which are required to be signed by the borrower before submitting to underwriting. Hence, the initial disclosures, to be signed, because at the IDTBS point, they are not yet signed.",
+      "category": "industry"
+    },
+    {
+      "term": "IO — Interest Only",
+      "meaning": "A type of ARM where the entire payment goes toward interest and none goes towards the principle of the loan for the first 5-10 years. After which time the payment increases to include both interest and principle. In the past this has led to many foreclosures as the increase is drastic. It is no longer an available mortgage product.",
+      "category": "industry"
+    },
+    {
+      "term": "IP — Investment Property",
+      "meaning": "A property that is purchased with the intention of using it as a source of income. This can be a long-term investment like an apartment complex in which rent is collected each month. It can also be a property that is purchased and fixed up with the intention on increasing the home's value, and then selling the property.",
+      "category": "industry"
+    },
+    {
+      "term": "IRRRL — Interest Rate Reduction Refinance Loan",
+      "meaning": "An Interest Rate Reduction Refinance Loan is one of two options when refinancing a VA loan. An IRRRL is only available on a property in which there is already a VA loan. This involves refinancing the loan in order to get a lower interest rate and lower monthly payments. As with the Traditional VA loan there is a funding fee. The funding fee on IRRRLs is .5% unless the veteran collects disability from the VA, then this fee is waived. This may also be called a Streamline Refinance.",
+      "category": "industry"
+    }
+  ]
+}

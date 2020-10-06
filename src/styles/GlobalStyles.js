@@ -20,6 +20,7 @@ const GlobalStyles = createGlobalStyle`
   --hp-cold-black: #001c2c;
   --sidebar-width: 260px;
   --topbar-height: 80px;
+  --base-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
 }
   html {
     margin: 0;
@@ -34,6 +35,9 @@ const GlobalStyles = createGlobalStyle`
     min-height: 100vh;
     position: relative;
     padding-bottom: 10rem;
+  }
+  *, * > * {
+    box-sizing: border-box;
   }
 `;
 

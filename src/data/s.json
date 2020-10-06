@@ -1,0 +1,20 @@
+{
+  "letter": "s",
+  "terms": [
+    {
+      "term": "SFD — Single Family Detached",
+      "meaning": "A free-standing residential building intended to be occupied by one family. however, homes with basement or mother-in-law suites may still fall under this distinction.",
+      "category": "industry"
+    },
+    {
+      "term": "SP — Subject Property",
+      "meaning": "A subject property is the property for which a borrower intends to get a loan. This can be either a new property or an existing property when refinancing.",
+      "category": "industry"
+    },
+    {
+      "term": "SRP — Service Release Premium",
+      "meaning": "The commission that is made by a bank or other financial institution when a mortgage is sold to a secondary mortgage market purchaser, such as, Fannie Mae, or an investment bank. The amount paid is dependent upon the market value of the mortgage note. it is also influenced by the interest rate, loan type, LTV, margin (for ARM loans), and credit score.",
+      "category": "industry"
+    }
+  ]
+}
