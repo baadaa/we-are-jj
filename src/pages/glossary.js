@@ -102,7 +102,7 @@ const SubNavStyle = styled.div`
       line-height: 1;
       display: flex;
       align-items: center;
-      font-size: 1.3rem;
+      font-size: 1.6rem;
       padding: 0.25rem 2rem;
       border: none;
       border-radius: 3rem;
