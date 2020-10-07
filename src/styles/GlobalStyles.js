@@ -21,6 +21,7 @@ const GlobalStyles = createGlobalStyle`
   --sidebar-width: 260px;
   --topbar-height: 80px;
   --base-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+  --hover-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
 }
   html {
     margin: 0;
@@ -38,6 +39,9 @@ const GlobalStyles = createGlobalStyle`
   }
   *, * > * {
     box-sizing: border-box;
+  }
+  p {
+    font-size: 1.5rem;
   }
 `;
 
