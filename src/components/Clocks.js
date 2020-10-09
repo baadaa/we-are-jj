@@ -197,10 +197,10 @@ const Clock = () => {
     const ampm = format(timeAt, 'aa', {
       timeZone: zone,
     });
-    const secondsAngle = (seconds * 360) / 60;
+    const secondsAngle = (seconds * 360) / 60 - 90;
     const minutesCalc = (minutes * 360) / 60;
-    const hoursAngle = (hours * 360) / 12 + minutesCalc / 12;
-    const minutesAngle = minutesCalc + secondsAngle / 60;
+    const hoursAngle = (hours * 360) / 12 + minutesCalc / 12 - 90;
+    const minutesAngle = minutesCalc + secondsAngle / 60 - 90;
     const dayDate = format(timeAt, 'EEE', {
       timeZone: zone,
     });
