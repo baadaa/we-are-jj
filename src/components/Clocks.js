@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { utcToZonedTime, format } from 'date-fns-tz';
 import styled from 'styled-components';
 import teamList from '../data/team.json';
+import ClockFace from '../assets/clockface2.svg';
 
 const peopleByZone = {
   P: [],
@@ -9,7 +10,7 @@ const peopleByZone = {
   C: [],
   E: [],
 };
-
+const clockSize = 160;
 const ClockWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -17,25 +18,77 @@ const ClockWrapper = styled.div`
 `;
 
 const ClockItem = styled.div`
-  flex-basis: 23%;
+  flex-basis: 23.5%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
+  padding: 2rem 0;
   background: #fff;
   .clockFace {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 13rem;
-    height: 13rem;
+    position: relative;
+    width: ${clockSize}px;
+    height: ${clockSize}px;
     padding: 2rem 0;
-    border-radius: 13rem;
+    border-radius: ${clockSize}px;
     background: #fff;
-    background: var(--hp-off-white);
-    box-shadow: inset var(--base-shadow);
+    /* background: var(--hp-off-white); */
+    /* box-shadow: inset var(--base-shadow); */
+    /* border: 1px solid #eee; */
     color: var(--hp-navy);
+  }
+  .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: ${clockSize}px;
+    height: ${clockSize}px;
+    /* transform: scale(0.9); */
+  }
+  .needle {
+    position: absolute;
+    z-index: 9;
+    top: calc(50% - 2px);
+    left: calc(50% - 2px);
+    width: ${clockSize * 0.4}px;
+    height: 4px;
+    background: #333;
+    border-radius: 10px;
+    transform-origin: left;
+    background: #fff;
+    border: 1px solid var(--hp-dark-gray);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.1s;
+    &.hour {
+      width: ${clockSize * 0.25}px;
+    }
+    &.minute {
+      width: ${clockSize * 0.35}px;
+    }
+    &.second {
+      background: var(--hp-hot-orange);
+      border: none;
+      width: ${clockSize * 0.45}px;
+      height: 2px;
+      top: calc(50% - 1px);
+      left: calc(50% - 1px);
+    }
+  }
+  .center {
+    position: absolute;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+    z-index: 9;
+    top: calc(50% - 0.8rem);
+    left: calc(50% - 0.8rem);
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 2rem;
+    background: var(--hp-off-white);
+    background: radial-gradient(#eee, var(--hp-off-white));
+    border: 1px solid var(--hp-dark-gray);
   }
   h4,
   h5,
@@ -44,20 +97,34 @@ const ClockItem = styled.div`
     font-weight: 400;
   }
   h4 {
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 0.5rem 0;
+    position: absolute;
+    top: calc(50% + 3rem);
+    left: 0;
+    width: 100%;
+    font-size: 1.2rem;
+    text-align: center;
+    font-weight: 500;
     span {
-      font-size: 1.5rem;
+      font-size: 1rem;
     }
   }
   h5 {
-    margin-top: -1rem;
-    font-size: 1.3rem;
+    position: absolute;
+    top: calc(50% + 2rem);
+    top: 2.5rem;
+    left: 0;
+    font-weight: 500;
+    width: 100%;
+    font-size: 1.2rem;
+    text-align: center;
   }
   h6 {
-    font-size: 1.1rem;
+    position: absolute;
+    top: calc(50% - 1rem);
+    right: 2.5rem;
+    font-size: 1rem;
   }
+
   border-radius: 1.5rem;
   box-shadow: var(--base-shadow);
 
@@ -118,7 +185,7 @@ const Clock = () => {
     'America/Chicago',
     'America/New_York',
   ];
-  const TimeStrings = ({ zone }) => {
+  const TimePiece = ({ zone }) => {
     const timeAt = utcToZonedTime(now, zone);
     const zoneStr = format(now, 'zzz', { timeZone: zone });
     const hours = timeAt.getHours();
@@ -130,20 +197,42 @@ const Clock = () => {
     const ampm = format(timeAt, 'aa', {
       timeZone: zone,
     });
+    const secondsAngle = (seconds * 360) / 60;
+    const minutesCalc = (minutes * 360) / 60;
+    const hoursAngle = (hours * 360) / 12 + minutesCalc / 12;
+    const minutesAngle = minutesCalc + secondsAngle / 60;
     const dayDate = format(timeAt, 'EEE', {
       timeZone: zone,
     });
-    const numberDate = format(timeAt, 'MMMM dd', {
+    const numberDate = format(timeAt, 'MMM dd', {
       timeZone: zone,
     });
     return (
       <div className="clockFace" key={zone + new Date().getMilliseconds()}>
+        <svg className="bg">
+          <use xlinkHref={`#${ClockFace.id}`} />
+        </svg>
+        <div
+          className="hour needle"
+          style={{ transform: `rotate(${hoursAngle}deg)` }}
+        ></div>
+        <div
+          className="minute needle"
+          style={{ transform: `rotate(${minutesAngle}deg)` }}
+        ></div>
+        <div
+          className="second needle"
+          style={{ transform: `rotate(${secondsAngle}deg)` }}
+        ></div>
+        <div className="center"></div>
         <h5>{zoneStr}</h5>
         <h4>
           {hoursStr}:{minutesStr}:{secondsStr} <span>{ampm}</span>
         </h4>
         <h6>
-          {numberDate} • {dayDate}
+          {numberDate}
+          <br />
+          {dayDate}
         </h6>
       </div>
     );
@@ -155,7 +244,7 @@ const Clock = () => {
 
         return (
           <ClockItem key={index}>
-            <TimeStrings zone={zone} i={index} />
+            <TimePiece zone={zone} i={index} />
             <ul>
               {peopleByZone[zoneIndex[index]].map(person => (
                 <li key={person.id}>

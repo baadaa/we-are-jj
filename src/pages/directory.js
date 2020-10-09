@@ -23,6 +23,7 @@ const CardsWrapperStyle = styled.div`
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    background: #fff;
     color: var(--hp-navy);
     transition: transform 0.2s, box-shadow 0.2s;
     &:hover {
