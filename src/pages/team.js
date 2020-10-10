@@ -132,9 +132,11 @@ const TeamPage = () => {
   };
   const ListView = () => (
     <MemberWrapper>
-      {teamList.people.map(person => (
-        <Member key={person.id} person={person} />
-      ))}
+      {teamList.people
+        .sort((a, b) => (a.name > b.name ? 1 : -1))
+        .map(person => (
+          <Member key={person.id} person={person} />
+        ))}
     </MemberWrapper>
   );
   const SquadView = () => (
