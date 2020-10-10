@@ -319,10 +319,18 @@ const TeamPage = () => {
     },
     [changeIndex, isDetailed, sortedPeople]
   );
+  const checkClick = useCallback(e => {
+    const clickedArea = e.target;
+    if (clickedArea.dataset.visible === 'true') {
+      setIsDetailed(false);
+    }
+  });
   useEffect(() => {
     document.addEventListener('keydown', checkKey, false);
+    document.addEventListener('click', checkClick, false);
     return () => {
       document.removeEventListener('keydown', checkKey, false);
+      document.removeEventListener('click', checkClick, false);
     };
   });
   const ListView = () => (
