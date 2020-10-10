@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
 import teamList from '../data/team.json';
@@ -38,56 +38,14 @@ const RadioStyle = styled.div`
     }
   }
 `;
-const MemberStyle = styled.div`
-  border-radius: 1rem;
-  box-shadow: var(--base-shadow);
-  /* width: 30rem; */
-  background: #fff;
-  flex-basis: ${props => (props.isFixedWidth ? '250px!important' : '32%')};
-  width: ${props => (props.isFixedWidth ? '250px!important' : '32%')};
-  margin-bottom: 2%;
-  padding: 2rem;
-  font-size: 1.5rem;
-  line-height: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  p {
-    margin: 0;
-    text-align: center;
-    &.name {
-      margin-bottom: 0.5rem;
-    }
-    &.detail {
-      font-size: 1.2rem;
-    }
-  }
-  p + p {
-    margin-top: 0.5rem;
-  }
-  img {
-    width: 10rem;
-    height: 10rem;
-    object-fit: cover;
-    border-radius: 10rem;
-    margin-bottom: 1.5rem;
-  }
-  @media screen and (max-width: 768px) {
-    flex-basis: 49%;
-  }
-  @media screen and (max-width: 400px) {
-    flex-basis: 100%;
-    margin-bottom: 1rem;
-  }
-`;
 const SquadWrapper = styled.div`
   display: flex;
-  background: var(--hp-coolgray);
+  background: #fff;
   border-radius: 1rem;
-  padding: 2rem;
-  box-shadow: inset var(--base-shadow);
-  margin-bottom: 2rem;
-  /* width: 100%; */
+  padding: 2rem 2rem 1rem;
+  box-shadow: var(--base-shadow);
+  margin: 2rem 0;
+  justify-content: space-between;
   flex-wrap: wrap;
   div {
     margin-right: 1rem;
@@ -97,13 +55,17 @@ const SquadWrapper = styled.div`
 const MemberWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+  margin: 2rem 0;
   justify-content: space-between;
 `;
-const MemberListStyle = styled.article`
+const MemberStyle = styled.article`
   border-radius: 1rem;
-  box-shadow: var(--base-shadow);
-  /* width: 30rem; */
-  background: #fff;
+  box-shadow: ${props =>
+    props.shadow === 'inset'
+      ? 'inset var(--base-shadow)'
+      : 'var(--base-shadow)'};
+  background: ${props =>
+    props.shadow === 'inset' ? 'var(--hp-off-white)' : '#fff'};
   flex-basis: 49%;
   width: 49%;
   margin-bottom: 2%;
@@ -136,59 +98,28 @@ const MemberListStyle = styled.article`
     margin-right: 1.5rem;
   }
   &:hover {
-    transform: translateY(-1px);
-    box-shadow: var(--hover-shadow);
+    transform: ${props =>
+      props.shadow === 'inset' ? 'translateY(1px)' : 'translateY(-1px)'};
+    box-shadow: ${props =>
+      props.shadow === 'inset'
+        ? 'inset var(--hover-shadow)'
+        : 'var(--hover-shadow)'};
   }
   @media screen and (max-width: 648px) {
     flex-basis: 100%;
     margin-bottom: 1rem;
   }
 `;
-const MemberInList = ({ person, click }) => {
-  const {
-    id,
-    name,
-    nickname,
-    title,
-    manager,
-    squad,
-    email,
-    timezone,
-    location,
-    photo,
-  } = person;
+const Member = ({ person, click, shadow }) => {
+  const { name, title, location, photo } = person;
   return (
-    <MemberListStyle onClick={() => click(person)}>
+    <MemberStyle shadow={shadow} onClick={() => click(person)}>
       <img src={photo} alt={name} />
       <div className="text">
         <p className="name">{name}</p>
-        <p className="detail">{email}</p>
         <p className="detail">{title}</p>
         <p className="detail">{location}</p>
       </div>
-    </MemberListStyle>
-  );
-};
-const Member = ({ person, isFixedWidth }) => {
-  const {
-    id,
-    name,
-    nickname,
-    title,
-    manager,
-    squad,
-    email,
-    timezone,
-    location,
-    photo,
-  } = person;
-  return (
-    <MemberStyle isFixedWidth={isFixedWidth}>
-      <img src={photo} alt={name} />
-      <p className="name">{name}</p>
-      <p className="detail">{email}</p>
-      <p className="detail">{title}</p>
-      <p className="detail">{location}</p>
     </MemberStyle>
   );
 };
@@ -199,7 +130,7 @@ const DetailProfileStyle = styled.div`
   right: 0;
   bottom: 0;
   z-index: 99999;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.85);
   transition: opacity 0.3s, transform 0.3s;
   display: flex;
   align-items: center;
@@ -214,19 +145,118 @@ const DetailProfileStyle = styled.div`
   }
   .card {
     position: relative;
-    max-width: 500px;
+    max-width: 330px;
     width: 100%;
     background: #fff;
     padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 1.5rem;
+    box-shadow: var(--base-shadow);
+  }
+  .team {
+    position: absolute;
+    top: 0rem;
+    left: 1.5rem;
+    height: 2rem;
+    padding: 0 1rem;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    transform: translateY(-2rem);
+    font-weight: 700;
+    background: var(--hp-gold);
+    color: var(--hp-navy);
+    box-shadow: var(--base-shadow);
+    &[data-bg='0'] {
+      background: var(--hp-hot-orange);
+      color: #fff;
+    }
+    &[data-bg='1'] {
+      background: var(--hp-gold);
+      color: var(--hp-navy);
+    }
+    &[data-bg='2'] {
+      background: var(--hp-yellow);
+      color: var(--hp-navy);
+    }
+    &[data-bg='3'] {
+      background: var(--hp-green);
+      color: var(--hp-navy);
+    }
+    &[data-bg='4'] {
+      background: var(--hp-turquoise);
+      color: var(--hp-navy);
+    }
+    &[data-bg='5'] {
+      background: var(--hp-light-blue);
+      color: var(--hp-navy);
+    }
+  }
+  h3 {
+    font-weight: 500;
+    font-size: 1.6rem;
+    margin: 1rem 0;
+    text-align: center;
+    span {
+      font-weight: 200;
+    }
+    span::before {
+      content: ' (';
+    }
+    span::after {
+      content: ')';
+    }
+  }
+  p {
+    font-size: 1.3rem;
+    margin: 0;
+    text-align: center;
+  }
+  p + p {
+    margin-top: 0.5rem;
   }
   img {
-    max-width: 15rem;
-    border-radius: 15rem;
+    max-width: 12rem;
+    border-radius: 12rem;
+  }
+  a {
+    text-decoration: none;
+    color: var(--hp-hot-orange);
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .reportingTo {
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    button {
+      border: none;
+      background: transparent;
+      outline: none;
+      font-size: 1.3rem;
+      padding: 0;
+      color: var(--hp-hot-orange);
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
   .close {
     position: absolute;
+    cursor: pointer;
     top: 0;
-    right: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 2.5rem;
+    color: #fff;
+    right: 1rem;
+    width: 3rem;
+    height: 3rem;
     transform: translateY(-3rem);
   }
 `;
@@ -246,12 +276,61 @@ const TeamPage = () => {
     const clicked = e.target.value;
     setView(clicked);
   };
+  const sortedPeople = [...teamList.people].sort((a, b) =>
+    a.name > b.name ? 1 : -1
+  );
+  const changeIndex = useCallback(
+    option => {
+      const currentIndex = sortedPeople.indexOf(currentPerson);
+      if (option === 'next' && currentIndex === sortedPeople.length - 1) {
+        return 0;
+      }
+      if (option === 'next' && currentIndex !== sortedPeople.length - 1) {
+        return currentIndex + 1;
+      }
+      if (option === 'prev' && currentIndex === 0) {
+        return sortedPeople.length - 1;
+      }
+      if (option === 'prev' && currentIndex !== 0) {
+        return currentIndex - 1;
+      }
+    },
+    [currentPerson, sortedPeople]
+  );
+
+  const checkKey = useCallback(
+    e => {
+      const keyList = [27, 37, 39]; // ESC, left, right;
+      if (!isDetailed || keyList.indexOf(e.which) === -1) return null;
+      let newIndex;
+      switch (e.which) {
+        case 27:
+          return setIsDetailed(false);
+        case 37:
+          newIndex = changeIndex('prev');
+          break;
+        case 39:
+          newIndex = changeIndex('next');
+          break;
+        default:
+          break;
+      }
+      setCurrentPerson(sortedPeople[newIndex]);
+    },
+    [changeIndex, isDetailed, sortedPeople]
+  );
+  useEffect(() => {
+    document.addEventListener('keydown', checkKey, false);
+    return () => {
+      document.removeEventListener('keydown', checkKey, false);
+    };
+  });
   const ListView = () => (
     <MemberWrapper>
-      {teamList.people
+      {[...teamList.people]
         .sort((a, b) => (a.name > b.name ? 1 : -1))
         .map(person => (
-          <MemberInList key={person.id} person={person} click={memberDetail} />
+          <Member key={person.id} person={person} click={memberDetail} />
         ))}
     </MemberWrapper>
   );
@@ -265,9 +344,12 @@ const TeamPage = () => {
           <SquadWrapper key={i}>
             <h2 style={{ width: '100%', margin: '0 0 1rem' }}>{squad}</h2>
             {members.map(member => (
-              <MemberWrapper key={member.id}>
-                <Member person={member} isFixedWidth />
-              </MemberWrapper>
+              <Member
+                person={member}
+                key={member.id}
+                click={memberDetail}
+                shadow="inset"
+              />
             ))}
           </SquadWrapper>
         );
@@ -311,8 +393,26 @@ const TeamPage = () => {
             &times;
           </button>
           <img src={currentPerson.photo} alt={currentPerson.name} />
-          <span style={{ display: currentPerson.manager ? '' : 'none' }}>
-            reporting to:{' '}
+          <div
+            className="team"
+            data-bg={squadList.indexOf(currentPerson.squad)}
+          >
+            {currentPerson.squad}
+          </div>
+          <h3>
+            {currentPerson.name}
+            <span>{currentPerson.nickname}</span>
+          </h3>
+          <p>{currentPerson.title}</p>
+          <p>{currentPerson.location}</p>
+          <p>
+            <a href={`mailto:${currentPerson.email}`}>{currentPerson.email}</a>
+          </p>
+          <span
+            style={{ display: currentPerson.manager ? '' : 'none' }}
+            className="reportingTo"
+          >
+            Reports to{' '}
             <button
               type="button"
               onClick={() =>
@@ -326,18 +426,6 @@ const TeamPage = () => {
               {currentPerson.manager}
             </button>
           </span>
-          <br />
-          team: {currentPerson.squad}
-          <br />
-          {currentPerson.name}
-          <br />
-          {currentPerson.title}
-          <br />
-          {currentPerson.nickname}
-          <br />
-          {currentPerson.location}
-          <br />
-          {currentPerson.email}
         </div>
       </DetailProfileStyle>
     </Layout>
