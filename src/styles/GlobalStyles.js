@@ -28,20 +28,40 @@ const GlobalStyles = createGlobalStyle`
     font-family: Poppins, sans-serif;
     padding: 0;
     font-size: 10px;
-    background: var(--hp-off-white);
+    background: var(--hp-navy);
   }
   body {
     margin: 0;
     padding: 0;
-    min-height: 100vh;
     position: relative;
-    padding-bottom: 10rem;
   }
   *, * > * {
     box-sizing: border-box;
   }
   p {
     font-size: 1.5rem;
+  }
+  @keyframes breatheRight {
+    0% {
+      transform: scale(1) translateY(-55%) translateX(50%);
+    }
+    33% {
+      transform: scale(1.1) translateY(-55%) translateX(50%);
+    }
+    100% {
+      transform: scale(1) translateY(-55%) translateX(50%);
+    }
+  }
+  @keyframes breatheLeft {
+    0% {
+      transform: scale(1) translateY(5%) translateX(-10%);
+    }
+    33% {
+      transform: scale(1.1) translateY(5%) translateX(-10%);
+    }
+    100% {
+      transform: scale(1) translateY(5%) translateX(-10%);
+    }
   }
 `;
 

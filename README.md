@@ -1,3 +1,3 @@
-# Homepoint CXM Team Portal
+# Homepoint Partner Wayfinder concept
 
-Better internal collabo. Built with `Gatsby`/`React`.
+Better wayfinder for multiple tools. Built with `Gatsby`/`React`.

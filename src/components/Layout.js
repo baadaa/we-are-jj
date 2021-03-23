@@ -1,20 +1,76 @@
 import React from 'react';
 import styled from 'styled-components';
+import '../styles/type.css';
 import 'normalize.css';
-import { Helmet } from 'react-helmet';
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
 import ErrorMsg from './AuthError';
 import GlobalStyles from '../styles/GlobalStyles';
-import Header from './Header';
-
-// TODO: Add `HELMET` for metadata
+import { Ring, Dots } from '../assets/ring';
 
 const WrapperStyle = styled.div`
   max-width: 90rem;
   margin: 0 auto;
-  padding: 9rem 1.5rem 0;
-  padding-top: ${props =>
-    props.hasSubnav ? `calc(${props.subNavHeight} + 6rem)` : '7rem'};
+  padding: 0 15px;
+  /* position: relative; */
+  position: static;
+  main {
+    width: 100%;
+    z-index: 90;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    @media screen and (max-width: 768px) {
+      justify-content: flex-start;
+      padding-top: 15px;
+    }
+  }
+  .topRight {
+    pointer-events: none;
+    opacity: 0.12;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    svg {
+      width: 40vw;
+      height: 40vw;
+      animation: breatheRight 15s linear infinite;
+    }
+  }
+  .bottomLeft {
+    pointer-events: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -1;
+    svg {
+      width: 30vw;
+      height: 30vw;
+      animation: breatheLeft 12s linear infinite;
+    }
+  }
+  @media screen and (max-width: 1024px) {
+    .topRight svg {
+      width: 50vw;
+      height: 50vw;
+      /* top: -30vw; */
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .topRight svg {
+      width: 60vw;
+      height: 60vw;
+      /* top: -40vw; */
+    }
+    .bottomLeft svg {
+      width: 40vw;
+      height: 40vw;
+      /* bottom: -10vw; */
+    }
+  }
 `;
 const Footer = styled.footer`
   position: absolute;
@@ -25,9 +81,8 @@ const Footer = styled.footer`
   left: 0;
   right: 0;
   font-size: 1.2rem;
-  background: var(--hp-navy);
+  background: var(--hp-indigo);
   color: var(--hp-indigo);
-  mix-blend-mode: multiply;
   z-index: 99;
   .copyright {
     padding: 1rem 2rem;
@@ -42,7 +97,7 @@ const Footer = styled.footer`
   }
 `;
 
-const Layout = ({ children, hasSubnav, subNavHeight, subNav }) => {
+const Layout = ({ children }) => {
   const {
     isLoading,
     isAuthenticated,
@@ -84,19 +139,14 @@ const Layout = ({ children, hasSubnav, subNavHeight, subNav }) => {
   }
   if (isAuthenticated) {
     return (
-      <WrapperStyle hasSubnav={hasSubnav} subNavHeight={subNavHeight}>
-        <Helmet>
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap"
-          />
-        </Helmet>
+      <WrapperStyle>
         <GlobalStyles />
-        <Header
-          hasSubnav={hasSubnav}
-          subNavHeight={subNavHeight}
-          subNav={subNav}
-        />
+        <div className="topRight">
+          <Ring fill="#fff" />
+        </div>
+        <div className="bottomLeft">
+          <Dots fill="var(--hp-light-blue)" />
+        </div>
         <main>{children}</main>
         <Footer>
           <div className="disclaimer">
