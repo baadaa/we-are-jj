@@ -3,33 +3,30 @@
  *
  * See: https://www.gatsbyjs.com/docs/gatsby-config/
  */
-
 module.exports = {
+  siteMetadata: {
+    title: 'JJ :: A Non-Secret Society',
+    description: `We are a group of eleven, not by design but by accident. With eclectic day jobs across many industries, we bring eccentric tastes and expertise to accomplish great things together—from personal to professional matters. We are friends, brothers, comrades and a family.`,
+    siteUrl: 'https://wearejj.com',
+    image: 'https://wearejj.com/we-are-jj.jpg',
+  },
   /* Your site config here */
   plugins: [
+    `gatsby-plugin-image`,
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,
-    `gatsby-plugin-svg-sprite`,
-    `gatsby-plugin-sass`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `data`,
-        path: `${__dirname}/src/data`,
-      },
-    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Homepoint Glossary`,
-        short_name: `HP Glossary`,
+        name: `We are JJ`,
+        short_name: `JJ`,
         start_url: `/`,
-        background_color: `#0c3258`,
-        theme_color: `#0c3258`,
+        background_color: `#7C1D3D`,
+        theme_color: `#7C1D3D`,
         display: `minimal-ui`,
-        icon: `src/assets/blue-dot.png`, // This path is relative to the root of the site.
+        icon: `src/assets/jj.png`, // This path is relative to the root of the site.
       },
     },
   ],

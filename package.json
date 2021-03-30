@@ -1,8 +1,8 @@
 {
-  "name": "homepoint-partner-wayfinder",
+  "name": "we-are-jj",
   "private": true,
   "version": "0.0.1",
-  "description": "Homepoint partner wayfinder for work items",
+  "description": "JJ, a not-so-secret society of expats",
   "author": "Bumhan Yu  <bumhan.yu@gmail.com>",
   "scripts": {
     "build": "gatsby build",
@@ -14,29 +14,15 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
-    "@auth0/auth0-react": "^1.1.0",
-    "@mdx-js/mdx": "^1.5.9",
-    "@mdx-js/react": "^1.5.7",
-    "@reach/router": "^1.3.3",
     "babel-plugin-styled-components": "^1.10.7",
-    "date-fns": "^2.16.1",
-    "date-fns-tz": "^1.0.10",
-    "fuse.js": "^6.4.1",
     "gatsby": "^2.24.66",
-    "gatsby-image": "^2.2.39",
+    "gatsby-plugin-image": "^1.1.3",
     "gatsby-plugin-manifest": "^2.4.33",
-    "gatsby-plugin-mdx": "^1.2.34",
     "gatsby-plugin-react-helmet": "^3.1.21",
-    "gatsby-plugin-sass": "^2.1.30",
     "gatsby-plugin-sharp": "^2.5.3",
     "gatsby-plugin-styled-components": "^3.1.20",
-    "gatsby-plugin-svg-sprite": "^2.0.1",
-    "gatsby-remark-copy-linked-files": "^2.2.1",
-    "gatsby-remark-images": "^3.2.1",
     "gatsby-source-filesystem": "^2.1.46",
     "gatsby-transformer-sharp": "^2.4.2",
-    "html-react-parser": "^0.14.0",
-    "node-sass": "^4.14.1",
     "normalize.css": "^8.0.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -56,6 +42,6 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^1.7.0",
-    "prettier": "2.1.2"
+    "prettier": "^2.2.1"
   }
 }

@@ -1,3 +1,3 @@
-# Homepoint Partner Wayfinder concept
+# JJ:: A Non-Secret Society
 
-Better wayfinder for multiple tools. Built with `Gatsby`/`React`.
+Built with `Gatsby`/`React`.

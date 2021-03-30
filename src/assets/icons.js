@@ -1,32 +1,153 @@
 import React from 'react';
 
-const Portal = props => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" {...props}>
-    <g>
-      <path d="M5273.1 2400.1v-2c0-2.8-5-4-9.7-4s-9.7 1.3-9.7 4v2a7 7 0 002 4.9l5 4.9c.3.3.4.6.4 1v6.4c0 .4.2.7.6.8l2.9.9c.5.1 1-.2 1-.8v-7.2c0-.4.2-.7.4-1l5.1-5a7 7 0 002-4.9zm-9.7-.1c-4.8 0-7.4-1.3-7.5-1.8.1-.5 2.7-1.8 7.5-1.8s7.3 1.3 7.5 1.8c-.2.5-2.7 1.8-7.5 1.8z" />
-      <path d="M5268.4 2410.3c-.6 0-1 .4-1 1s.4 1 1 1h4.3c.6 0 1-.4 1-1s-.4-1-1-1h-4.3zM5272.7 2413.7h-4.3c-.6 0-1 .4-1 1s.4 1 1 1h4.3c.6 0 1-.4 1-1s-.4-1-1-1zM5272.7 2417h-4.3c-.6 0-1 .4-1 1s.4 1 1 1h4.3c.6 0 1-.4 1-1 0-.5-.4-1-1-1z" />
-      <g>
-        <path d="M87.9 11.4H12.1A9.6 9.6 0 002.5 21v58c0 5.3 4.3 9.6 9.6 9.6h75.8c5.3 0 9.6-4.3 9.6-9.6V21c0-5.3-4.3-9.6-9.6-9.6zm-75.8 5.9h75.8c2 0 3.6 1.6 3.6 3.6v10.7h-83V21c0-2 1.6-3.7 3.6-3.7zm75.8 65.4H12.1c-2 0-3.6-1.6-3.6-3.6V37.6h83.1V79c-.1 2-1.7 3.7-3.7 3.7z" />
-        <circle cx="16.7" cy="24.5" r="3.4" />
-        <circle cx="26.7" cy="24.5" r="3.4" />
-        <circle cx="36.8" cy="24.5" r="3.4" />
-        <path d="M68.1 27.1h15.6c1.4 0 2.6-1.2 2.6-2.6s-1.2-2.6-2.6-2.6H68.1c-1.4 0-2.6 1.2-2.6 2.6s1.1 2.6 2.6 2.6zM43.1 46.4H20.6c-2 0-3.6 1.6-3.6 3.6v20.3c0 2 1.6 3.6 3.6 3.6h22.5c2 0 3.6-1.6 3.6-3.6V50c0-2-1.6-3.6-3.6-3.6zM40.7 68H22.9V52.3h17.8V68zM80.1 46.4H56.3c-1.6 0-3 1.3-3 3s1.3 3 3 3h23.8c1.6 0 3-1.3 3-3s-1.4-3-3-3zM80.1 57.2H56.3a3 3 0 00-3 3 3 3 0 003 3h23.8a3 3 0 003-3c-.1-1.7-1.4-3-3-3zM80.1 68H56.3a3 3 0 00-3 3 3 3 0 003 3h23.8a3 3 0 003-3c-.1-1.7-1.4-3-3-3z" />
-      </g>
-    </g>
+const SignJ = props => (
+  <svg viewBox="0 0 313 222" {...props} xmlns="http://www.w3.org/2000/svg">
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M156.3 33.2a110.6 110.6 0 01156.3-.1l.1.1-78.1 78.2-78.2 78.1a110.6 110.6 0 01-156.4 0l78.2-78.1 78.1-78.2z"
+    />
   </svg>
 );
 
-const Tasks = props => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" {...props}>
-    <g>
-      <path d="M5273.1 2400.1v-2c0-2.8-5-4-9.7-4s-9.7 1.3-9.7 4v2a7 7 0 002 4.9l5 4.9c.3.3.4.6.4 1v6.4c0 .4.2.7.6.8l2.9.9c.5.1 1-.2 1-.8v-7.2c0-.4.2-.7.4-1l5.1-5a7 7 0 002-4.9zm-9.7-.1c-4.8 0-7.4-1.3-7.5-1.8.1-.5 2.7-1.8 7.5-1.8s7.3 1.3 7.5 1.8c-.2.5-2.7 1.8-7.5 1.8z" />
-      <path d="M5268.4 2410.3c-.6 0-1 .4-1 1s.4 1 1 1h4.3c.6 0 1-.4 1-1s-.4-1-1-1h-4.3zM5272.7 2413.7h-4.3c-.6 0-1 .4-1 1s.4 1 1 1h4.3c.6 0 1-.4 1-1s-.4-1-1-1zM5272.7 2417h-4.3c-.6 0-1 .4-1 1s.4 1 1 1h4.3c.6 0 1-.4 1-1 0-.5-.4-1-1-1z" />
-      <g>
-        <path d="M46.6 32.7H78a2.9 2.9 0 000-5.8H46.6a2.9 2.9 0 00-2.9 2.9c.1 1.6 1.4 2.9 2.9 2.9zM24.4 36.4c.5.6 1.3.9 2.1.9s1.6-.3 2.1-.9l8.6-9.2a3 3 0 00-.1-4.1 3 3 0 00-4.1.1l-6.5 6.9-2.4-2.6a2.9 2.9 0 00-4.1-.1 2.9 2.9 0 00-.1 4.1l4.5 4.9zM46.6 52.9H78a2.9 2.9 0 000-5.8H46.6a2.9 2.9 0 00-2.9 2.9c.1 1.6 1.4 2.9 2.9 2.9zM24.4 56.6c.5.6 1.3.9 2.1.9s1.6-.3 2.1-.9l8.6-9.2a3 3 0 00-.1-4.1 3 3 0 00-4.1.1l-6.5 6.9-2.4-2.6a2.9 2.9 0 00-4.1-.1 2.9 2.9 0 00-.1 4.1l4.5 4.9zM46.6 73.1H78a2.9 2.9 0 000-5.8H46.6c-1.6 0-2.9 1.3-2.9 2.9s1.4 2.9 2.9 2.9zM24.4 76.8c.5.6 1.3.9 2.1.9s1.6-.3 2.1-.9l8.6-9.2a3 3 0 00-.1-4.1 3 3 0 00-4.1.1l-6.5 6.9-2.4-2.5a2.9 2.9 0 00-4.1-.1 2.9 2.9 0 00-.1 4.1l4.5 4.8z" />
-        <path d="M94.6 5.7H5.4a2.9 2.9 0 00-2.9 2.9v82.9c0 1.6 1.3 2.9 2.9 2.9h89.2c1.6 0 2.9-1.3 2.9-2.9V8.6c0-1.6-1.3-2.9-2.9-2.9zm-2.9 82.9H8.3V11.4h83.5v77.2z" />
-      </g>
-    </g>
+const Rectangle = props => (
+  <svg viewBox="0 0 166 166" {...props} xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h166v166H0z" />
   </svg>
 );
 
-export { Portal, Tasks };
+const Circle = props => (
+  <svg viewBox="0 0 173 173" {...props} xmlns="http://www.w3.org/2000/svg">
+    <circle cx="86.5" cy="86.5" r="86.5" />
+  </svg>
+);
+
+const IconMedical = () => (
+  <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M4 60l12-12"
+      stroke="#1F637A"
+      strokeWidth="4"
+      strokeMiterlimit="10"
+      strokeLinecap="square"
+    />
+    <path
+      d="M34 18l12 12M16 48l4-16L47.2 4.8a4 4 0 015.7 0l6.3 6.3a4 4 0 010 5.7L32 44l-16 4zM44 8l12 12"
+      stroke="#1F637A"
+      strokeWidth="4"
+      strokeMiterlimit="10"
+    />
+  </svg>
+);
+
+const IconSW = () => (
+  <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M22 34l-4 4 4 4M42 34l4 4-4 4M28 46l8-16M10 13h4M20 13h4M43 13h11M2 20h60"
+      stroke="#1F637A"
+      strokeWidth="4"
+      strokeMiterlimit="10"
+      strokeLinecap="square"
+    />
+    <path
+      d="M62 6H2v52h60V6z"
+      stroke="#1F637A"
+      strokeWidth="4"
+      strokeMiterlimit="10"
+      strokeLinecap="square"
+    />
+  </svg>
+);
+
+const IconFinance = () => (
+  <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M39 37H25v24h14V37zM16 49H2v12h14V49zM62 25H48v36h14V25z"
+      stroke="#1F637A"
+      strokeWidth="4"
+      strokeMiterlimit="10"
+      strokeLinecap="square"
+    />
+    <path
+      d="M10 27l12-12 10 10L54 3"
+      stroke="#1F637A"
+      strokeWidth="4"
+      strokeMiterlimit="10"
+    />
+    <path
+      d="M40 3h14v14"
+      stroke="#1F637A"
+      strokeWidth="4"
+      strokeMiterlimit="10"
+      strokeLinecap="square"
+    />
+  </svg>
+);
+
+const IconMedia = () => (
+  <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M7 41V13a5 5 0 015-5h40a5 5 0 015 5v28M40 47v4H24v-4H2v1a8 8 0 008 8h44a8 8 0 008-8v-1H40z"
+      stroke="#1F637A"
+      strokeWidth="4"
+      strokeMiterlimit="10"
+      strokeLinecap="square"
+    />
+    <path
+      d="M27 21v14l12-7-12-7z"
+      stroke="#1F637A"
+      strokeWidth="4"
+      strokeMiterlimit="10"
+      strokeLinecap="square"
+    />
+  </svg>
+);
+
+const IconCreative = () => (
+  <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M62 18h-8v8h8v-8zM26 54h-8v8h8v-8zM62 54h-8v8h8v-8zM54 58H26M58 26v28M42 22h12M22 54V42M10 2H2v8h8V2zM46 2h-8v8h8V2zM10 38H2v8h8v-8zM46 38h-8v8h8v-8zM38 42H10M42 10v28M10 6h28M6 38V10"
+      stroke="#1F637A"
+      strokeWidth="4"
+      strokeMiterlimit="10"
+      strokeLinecap="square"
+    />
+  </svg>
+);
+
+const IconEnvironment = () => (
+  <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M20 44v6h24V20H10v30"
+      stroke="#1F637A"
+      strokeWidth="4"
+      strokeMiterlimit="10"
+      strokeLinecap="square"
+    />
+    <path
+      d="M61 49V13a8 8 0 00-8-8h-2v36h2a8 8 0 018 6 8 8 0 01-8 10H3V13h43"
+      stroke="#1F637A"
+      strokeWidth="4"
+      strokeMiterlimit="10"
+    />
+    <path
+      d="M28 20v14h-8"
+      stroke="#1F637A"
+      strokeWidth="4"
+      strokeMiterlimit="10"
+      strokeLinecap="square"
+    />
+  </svg>
+);
+
+export {
+  SignJ,
+  IconMedical,
+  IconSW,
+  IconFinance,
+  IconMedia,
+  IconCreative,
+  IconEnvironment,
+  Rectangle,
+  Circle,
+};
