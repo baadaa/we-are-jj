@@ -44,7 +44,7 @@ const GlobalStyles = createGlobalStyle`
     --red100: #F5D6E0;
     --red50: #FAEAF0;
 
-
+  --resume-width: 1200px;
   --base-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
   --hover-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
 }

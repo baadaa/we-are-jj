@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
+import useSiteMetadata from '../hooks/use-site-metadata';
 
 const SEO = () => (
   <StaticQuery
@@ -49,5 +50,35 @@ const SEO = () => (
     }}
   />
 );
+const ProfileSEO = props => {
+  const { name, image, location, description } = props;
+  const { siteUrl } = useSiteMetadata();
+  return (
+    <React.Fragment>
+      <Helmet>
+        {/* General tags */}
+        <title>{`${name} :: JJ`}</title>
+        <meta name="description" content={description} />
+        <meta name="image" content={`${siteUrl}/${image}`} />
+        <link rel="canonical" href={`${siteUrl}${location}`} />
+
+        {/* OpenGraph tags */}
+        <meta property="og:url" content={`${siteUrl}${location}`} />
+        <meta property="og:title" content={`${name} :: JJ`} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={`${siteUrl}/${image}`} />
+
+        {/* Twitter Card tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:creator" content="baadaa" />
+        <meta name="twitter:title" content={`${name} :: JJ`} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={`${siteUrl}/${image}`} />
+      </Helmet>
+    </React.Fragment>
+  );
+};
 
 export default SEO;
+
+export { ProfileSEO };
