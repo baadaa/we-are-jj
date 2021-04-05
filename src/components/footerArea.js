@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'gatsby';
 import { SignJ } from '../assets/icons';
+import { memberData } from '../data/memberData';
 
 const FooterStyles = styled.footer`
   box-sizing: border-box;
@@ -73,52 +75,6 @@ const FooterStyles = styled.footer`
     }
   }
 `;
-const jj = [
-  {
-    name: 'Allen',
-    link: 'https://www.linkedin.com/in/allen-chun-cpa-70732b15/',
-  },
-  {
-    name: 'Andew',
-    link: 'http://andrew-lee.squarespace.com/',
-  },
-  {
-    name: 'B',
-    link: 'http://bald.design/',
-  },
-  {
-    name: 'Ed',
-    link: 'https://www.linkedin.com/in/ed-suh-3284a517/',
-  },
-  {
-    name: 'Edward',
-    link: 'https://www.linkedin.com/in/hyoungtae-edward-kwon-1a448743/',
-  },
-  {
-    name: 'Hal',
-    link: 'https://www.linkedin.com/in/hal-choi-21a95959/',
-  },
-  {
-    name: 'Hoon',
-    link: 'https://www.linkedin.com/in/hoonrhee/',
-  },
-  {
-    name: 'Kevin',
-    link: 'https://www.linkedin.com/in/hongyeol-kevin-jeon-328043b4/',
-  },
-  {
-    name: 'Paul',
-    link: 'https://www.linkedin.com/in/paul-lee-2b445734/',
-  },
-  {
-    name: 'Suho',
-    link: 'https://www.linkedin.com/in/suhosong/',
-  },
-  {
-    name: 'Young',
-    link: 'http://www.youngjinlim.com/',
-  },
-];
 const Footer = () => (
   <FooterStyles>
     <div className="wrapper">
@@ -134,11 +90,9 @@ const Footer = () => (
         &copy; {new Date().getFullYear()} by JJ
       </div>
       <ul>
-        {jj.map((person, index) => (
+        {memberData.map((person, index) => (
           <li key={index}>
-            <a href={person.link} target="_blank" rel="noreferrer noopener">
-              {person.name}
-            </a>
+            <Link to={person.page}>{person.name}</Link>
           </li>
         ))}
       </ul>
