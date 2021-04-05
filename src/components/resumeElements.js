@@ -34,6 +34,9 @@ const SummarySectionStyles = styled.section`
     margin-right: calc(var(--base-size) / 6);
     border-radius: var(--base-size);
     overflow: hidden;
+    picture {
+      border-radius: 180px;
+    }
   }
   h1,
   h2,
