@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 
 import { ProfileLayout } from '../components/Layout';
 import { ProfileSEO } from '../components/seo';
-import { resumeData } from '../data/resume';
+import { memberData } from '../data/memberData';
 import {
   SummarySection,
   ExperienceSection,
@@ -11,7 +11,7 @@ import {
 } from '../components/resumeElements';
 
 const PaulPage = ({ location, data }) => {
-  const person = resumeData.find(member => member.name === 'Paul');
+  const person = memberData.find(member => member.name === 'Paul');
   const imgArray = data.allImageSharp.edges.map(
     item => item.node.gatsbyImageData
   );
@@ -22,7 +22,7 @@ const PaulPage = ({ location, data }) => {
         name={person.name}
         description={person.description}
         location={location.pathname}
-        image={person.headshot}
+        image={person.og}
       />
       <SummarySection images={imgArray} person={person} />
       <ExperienceSection images={imgArray} person={person} />

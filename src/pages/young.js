@@ -10,8 +10,8 @@ import {
   EducationSection,
 } from '../components/resumeElements';
 
-const AllenPage = ({ location, data }) => {
-  const person = memberData.find(member => member.name === 'Allen');
+const YoungPage = ({ location, data }) => {
+  const person = memberData.find(member => member.name === 'Young');
   const imgArray = data.allImageSharp.edges.map(
     item => item.node.gatsbyImageData
   );
@@ -30,7 +30,7 @@ const AllenPage = ({ location, data }) => {
     </ProfileLayout>
   );
 };
-export default AllenPage;
+export default YoungPage;
 
 export const pageQuery = graphql`
   query {

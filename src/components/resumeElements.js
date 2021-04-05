@@ -1,10 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import {
+  FaHome,
+  FaLinkedin,
+  FaGithubSquare,
+  FaBehanceSquare,
+  FaVimeoSquare,
+} from 'react-icons/fa';
+import { ImSoundcloud2 } from 'react-icons/im';
 
+const socialIcons = {
+  site: <FaHome />,
+  linkedin: <FaLinkedin />,
+  github: <FaGithubSquare />,
+  vimeo: <FaVimeoSquare />,
+  behance: <FaBehanceSquare />,
+  soundcloud: <ImSoundcloud2 />,
+};
 const SummarySectionStyles = styled.section`
   max-width: var(--resume-width);
-  margin: 0 auto;
+  margin: 0 auto 50px;
   .basic {
     display: flex;
     align-items: center;
@@ -23,6 +39,26 @@ const SummarySectionStyles = styled.section`
   h2,
   p {
     margin: 0;
+  }
+  ul {
+    list-style: none;
+    margin: 10px 0 0;
+    padding: 0;
+  }
+  li {
+    display: inline;
+    font-size: 20px;
+    a {
+      color: inherit;
+      opacity: 0.4;
+      transition: opacity 0.2s;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+  li + li {
+    margin-left: 5px;
   }
   h1 {
     font-size: 56px;
@@ -44,10 +80,10 @@ const SummarySectionStyles = styled.section`
   }
   @media screen and (max-width: 1024px) {
     .headshot {
-      --base-size: 120px;
+      --base-size: 160px;
     }
     h1 {
-      font-size: 48px;
+      font-size: 45px;
     }
     h2 {
       font-size: 16px;
@@ -58,7 +94,7 @@ const SummarySectionStyles = styled.section`
   }
   @media screen and (max-width: 850px) {
     .headshot {
-      --base-size: 100px;
+      --base-size: 140px;
     }
     h1 {
       font-size: 36px;
@@ -71,18 +107,18 @@ const SummarySectionStyles = styled.section`
     }
   }
   @media screen and (max-width: 450px) {
-    .basic {
-      display: block;
+    h1 {
+      font-size: 28px;
     }
     .headshot {
-      margin-bottom: calc(var(--base-size) / 6);
+      --base-size: 120px;
     }
   }
 `;
 const ContentSectionStyles = styled.section`
   padding-left: 210px;
   max-width: var(--resume-width);
-  margin: 50px auto 0;
+  margin: 0 auto 30px;
   display: flex;
   flex-wrap: wrap;
   h3,
@@ -130,7 +166,7 @@ const ContentSectionStyles = styled.section`
     margin-right: calc(var(--base-size) / 3.5);
   }
   @media screen and (max-width: 1024px) {
-    padding-left: 140px;
+    padding-left: 190px;
     h3 {
       font-size: 12px;
     }
@@ -154,7 +190,7 @@ const ContentSectionStyles = styled.section`
     max-width: 400px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 30px;
+    margin-bottom: 20px;
     .block {
       flex-basis: 100%;
     }
@@ -164,23 +200,39 @@ const ContentSectionStyles = styled.section`
 const findImage = (imgArray, target) =>
   imgArray.find(img => img.images.fallback.src.endsWith(target));
 
-const SummarySection = ({ images, person }) => (
-  <SummarySectionStyles>
-    <div className="basic">
-      <div className="headshot">
-        <GatsbyImage
-          image={findImage(images, person.headshot)}
-          alt={person.name}
-        />
+const SummarySection = ({ images, person }) => {
+  const socialItems = Object.keys(person.social);
+  return (
+    <SummarySectionStyles>
+      <div className="basic">
+        <div className="headshot">
+          <GatsbyImage
+            image={findImage(images, person.headshot)}
+            alt={person.name}
+          />
+        </div>
+        <div className="text">
+          <h1>{person.name}</h1>
+          <h2>{person.description}</h2>
+          <p className="location">{person.location}</p>
+          <ul>
+            {socialItems.map((item, index) => (
+              <li key={index}>
+                <a
+                  href={person.social[item]}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  {socialIcons[item]}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-      <div className="text">
-        <h1>{person.name}</h1>
-        <h2>{person.description}</h2>
-        <p className="location">{person.location}</p>
-      </div>
-    </div>
-  </SummarySectionStyles>
-);
+    </SummarySectionStyles>
+  );
+};
 const ExperienceSection = ({ images, person }) => (
   <ContentSectionStyles>
     <h3>Experience</h3>
